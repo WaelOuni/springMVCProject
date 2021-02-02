@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="layouts :: head-page"></head>
+<body>
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+
+<nav th:replace="layouts :: navbar-main"></nav>
+
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Stage</th>
+            <th scope="col">Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="aProj : ${projectList}">
+            <th th:text="${aProj.projectId}" scope="row"></th>
+            <td th:text="${aProj.name}"></td>
+            <td th:text="${aProj.stage}"></td>
+            <td th:text="${aProj.description}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="/projects/new" class="btn btn-success">Create Project</a>
+</div>
+</body>
+</html>
